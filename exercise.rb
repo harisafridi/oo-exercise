@@ -1,83 +1,47 @@
-
+require 'Date'
 class Person
-  emails = []
-  attr_accessor   :first_name, :last_name,:dob, :fullname, :emailarray
+  
+  attr_accessor   :first_name, :last_name,:dob, :fullname, :emailarray, :phonearray
   
   # Initialize instance variables
-	def initialize(first_name='haris', last_name='yellow', dob='1/1/1990', emailarray=[])
+	def initialize(first_name='haris', last_name='yellow', dob='1 Jan 1990', emailarray=[], phonearray=[])
     @dob = dob
     @first_name = first_name
     @last_name = last_name
     @fullname = first_name+' '+last_name
-    @emailarray
+    @emailarray = emailarray
+    @phonearray = phonearray
 	end
 
-phonenums= []
  # Instance methods
-   def add_email
-    puts 'add email'
-    emails = [0] 
+   def add_email(emailarray)
+    @emailarray << emailarray
    end
-   def add_phone
-    puts 'add phone'
-    phonenums = [0] 
+   def show_email
+    @emailarray.inspect.to_s
+  end
+   def add_phone(phonearray)
+    @phonearray << phonearray
    end
-   def remove_email
-    emails.delete(0)
+   def show_phone
+    @phonearray.inspect.to_s
+   end
+   def remove_email(value)
+    emailarray.delete_at(value)
    end
    def remove_phone
-    phonenums.delete(0)
-   end
-
-   def phone_numbers
-    puts phonenums
-   end
-   def emails
-    puts emails
+    @phonearray.inspect
    end
    def to_s
-    puts "#{first_name}, #{last_name} was born on #{dob} "
-    puts "their email addresses are: #{emails} and phone numbers: #{phonenums}"
+    puts "#{first_name}, #{last_name} was born on #{dob}.\\n\ Their email addresses are: \n  #{emailarray} .\\n\ Their phone numbers are #{phonearray}"
    end
-end
 
-class Baby < Person
-  attr_accessor :smells
-  def initialize(height, hair='None', top='white')    
-      @smells=true
-      super #bubbles up to the parent class.....
-  end
-  def cry
-    'Wahhhhhhhh'
-  end
-  
-  def dance
-    'I am a baby, I cant dance'
-  end
-  
-  def to_s
-    if smells
-      'I am a baby and i smell'
+   def print_details
+    puts fullname
+     fullname.length.times {print '-'}
+      d=Date.new(dob)
+     d.stftime('%m %B %Y')
 
-    else 
-      'I m a nic clean'
+     puts "Date of Birth: #{d}"
     end
-  end
-end
-
-class OldPerson < Person
-  attr_accessor :smells
-  def initialize(height, hair='None', top='white')    
-      @smells=true
-      super #bubbles up to the parent class.....
-  end
-  def to_s
-    if smells
-      'I am an Old Person and i smell'
-    else 
-      'I m a nice Old Person'
-    end
-  end
-end
-
-
+  end 
