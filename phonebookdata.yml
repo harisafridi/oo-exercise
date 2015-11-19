@@ -1,0 +1,17 @@
+people:
+	- fname: Haris
+	  surname: afr
+	  dob: 1 Jan 1990
+	  emails:
+	 		- har@example.com
+	 		- is@work.com
+	  phones:
+	 		- 07717234568
+	 		- 02013930304
+	- fname: Andy
+	  surname: Another
+	  dob: 1 Jan 1990
+	  emails:
+	 		- har@example.com
+	  phones:
+	 		- 07717234568
